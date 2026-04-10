@@ -19,7 +19,8 @@
       "WebFetch(domain:open.spotify.com)",
       "Bash(curl -L \"https://i.scdn.co/image/ab67616d0000b2734ef740c8abbe574e78c0bcef\" -o /c/Dev/Websites/biltroyrecords.com/public/images/hypnic-jerks-ep.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
       "Bash(node -e \"require\\(''sharp''\\); console.log\\(''sharp ok''\\)\")",
-      "Bash(node -e \"require\\(''jimp''\\); console.log\\(''jimp ok''\\)\")"
+      "Bash(node -e \"require\\(''jimp''\\); console.log\\(''jimp ok''\\)\")",
+      "Bash(ls /c/Dev/Websites/biltroyrecords.com/app/icon* /c/Dev/Websites/biltroyrecords.com/app/favicon*)"
     ]
   }
 }

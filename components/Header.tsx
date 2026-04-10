@@ -9,10 +9,9 @@ export default function Header() {
           <Image
             src="/images/image01.png"
             alt="Biltroy Records"
-            width={80}
-            height={36}
-            className="object-contain opacity-90 group-hover:opacity-100 transition-opacity invert"
-            style={{ height: '28px', width: 'auto' }}
+            width={47}
+            height={28}
+            className="opacity-90 group-hover:opacity-100 transition-opacity invert"
           />
         </Link>
         <span className="text-[10px] uppercase tracking-widest text-muted hidden sm:block">

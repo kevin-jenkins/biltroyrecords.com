@@ -17,7 +17,9 @@
       "Bash(curl -L \"https://f4.bcbits.com/img/0037224562_10.jpg\" -o /c/Dev/Websites/biltroyrecords.com/public/images/atr-vinyl-2.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
       "Bash(curl -L \"https://f4.bcbits.com/img/0037224564_10.jpg\" -o /c/Dev/Websites/biltroyrecords.com/public/images/atr-vinyl-3.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
       "WebFetch(domain:open.spotify.com)",
-      "Bash(curl -L \"https://i.scdn.co/image/ab67616d0000b2734ef740c8abbe574e78c0bcef\" -o /c/Dev/Websites/biltroyrecords.com/public/images/hypnic-jerks-ep.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")"
+      "Bash(curl -L \"https://i.scdn.co/image/ab67616d0000b2734ef740c8abbe574e78c0bcef\" -o /c/Dev/Websites/biltroyrecords.com/public/images/hypnic-jerks-ep.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(node -e \"require\\(''sharp''\\); console.log\\(''sharp ok''\\)\")",
+      "Bash(node -e \"require\\(''jimp''\\); console.log\\(''jimp ok''\\)\")"
     ]
   }
 }

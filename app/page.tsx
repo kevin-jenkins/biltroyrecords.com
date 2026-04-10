@@ -14,6 +14,7 @@ export default function HomePage() {
           height={120}
           className="object-contain invert opacity-95"
           priority
+          loading="eager"
         />
       </section>
 
@@ -23,9 +24,9 @@ export default function HomePage() {
           Releases
         </h2>
         <div className="flex flex-wrap justify-center gap-6">
-          {albums.map((album) => (
+          {albums.map((album, i) => (
             <div key={album.slug} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <AlbumCard album={album} />
+              <AlbumCard album={album} priority={i === 0} />
             </div>
           ))}
         </div>

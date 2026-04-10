@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Album } from '@/data/albums'
 import { formatReleaseDate } from '@/data/albums'
 
-export default function AlbumCard({ album }: { album: Album }) {
+export default function AlbumCard({ album, priority = false }: { album: Album; priority?: boolean }) {
   return (
     <Link
       href={`/albums/${album.slug}`}
@@ -15,6 +15,8 @@ export default function AlbumCard({ album }: { album: Album }) {
           src={album.coverImage}
           alt={`${album.title} by ${album.artist}`}
           fill
+          priority={priority}
+          loading={priority ? 'eager' : 'lazy'}
           className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.04]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />

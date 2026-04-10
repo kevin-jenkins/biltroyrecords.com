@@ -52,10 +52,11 @@ function ProductCard({ product }: { product: PhysicalProduct }) {
       {/* Main image */}
       <div className="relative aspect-square w-full bg-[#0d0d0d] border border-border overflow-hidden">
         <Image
+          key={product.images[activeIndex].src}
           src={product.images[activeIndex].src}
           alt={product.images[activeIndex].alt}
           fill
-          className="object-contain transition-opacity duration-200"
+          className="object-contain"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>

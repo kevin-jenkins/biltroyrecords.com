@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p assets/images)",
+      "Bash(curl -L \"https://biltroyrecords.com/assets/images/image01.png\" -o assets/images/image01.png)",
+      "Bash(curl -L \"https://biltroyrecords.com/assets/images/image02.jpg\" -o assets/images/image02.jpg)",
+      "Bash(curl -L \"https://biltroyrecords.com/assets/images/image03.jpg\" -o assets/images/image03.jpg)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\")",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(mv _index.html.bak index.html)",
+      "Bash(mkdir -p /tmp/biltroy-next)",
+      "Read(//tmp/**)",
+      "Bash(npm run:*)",
+      "Bash(node -e \":*)",
+      "WebFetch(domain:megayacht.bandcamp.com)",
+      "Bash(curl -L \"https://f4.bcbits.com/img/0037224561_10.jpg\" -o /c/Dev/Websites/biltroyrecords.com/public/images/atr-vinyl-1.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L \"https://f4.bcbits.com/img/0037224562_10.jpg\" -o /c/Dev/Websites/biltroyrecords.com/public/images/atr-vinyl-2.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L \"https://f4.bcbits.com/img/0037224564_10.jpg\" -o /c/Dev/Websites/biltroyrecords.com/public/images/atr-vinyl-3.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")",
+      "WebFetch(domain:open.spotify.com)",
+      "Bash(curl -L \"https://i.scdn.co/image/ab67616d0000b2734ef740c8abbe574e78c0bcef\" -o /c/Dev/Websites/biltroyrecords.com/public/images/hypnic-jerks-ep.jpg --silent -w \"%{http_code} %{size_download}\\\\n\")"
+    ]
+  }
+}

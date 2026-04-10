@@ -1,0 +1,956 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Biltroy Records</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="description" content="Biltroy Records: independent record label in Chapel Hill, NC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=JetBrains+Mono:ital,wght@0,500;0,700;1,500;1,700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;1,300;1,400" rel="stylesheet" type="text/css" />
+  <style>
+
+    /* ============================
+       RESET
+       ============================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
+    }
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+    body { line-height: 1; }
+    ol, ul { list-style: none; }
+    blockquote, q { quotes: none; }
+    blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+    table { border-collapse: collapse; border-spacing: 0; }
+    input, select, textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+    mark { background-color: transparent; color: inherit; }
+
+    /* ============================
+       CSS CUSTOM PROPERTIES + ROOT
+       ============================ */
+    :root {
+      --background-height: 100vh;
+      --site-language-alignment: left;
+      --site-language-direction: ltr;
+      --site-language-flex-alignment: flex-start;
+      --site-language-indent-left: 1;
+      --site-language-indent-right: 0;
+      --site-language-margin-left: 0;
+      --site-language-margin-right: auto;
+      --viewport-height: 100vh;
+    }
+    html {
+      font-size: 18pt;
+    }
+
+    /* ============================
+       BODY + PAGE LOAD OVERLAY
+       ============================ */
+    body {
+      background-color: #F2F2F2;
+      min-height: var(--viewport-height);
+      min-width: 320px;
+      overflow-x: hidden;
+      word-wrap: break-word;
+    }
+    body:after {
+      background-color: #F2F2F2;
+      content: '';
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      transition: opacity 0.375s ease-in-out 0s, visibility 0.375s 0s;
+      visibility: hidden;
+      width: 100%;
+      z-index: 1;
+    }
+    body.is-loading:after {
+      opacity: 1;
+      visibility: visible;
+    }
+    body.is-instant *,
+    body.is-instant *::before,
+    body.is-instant *::after {
+      transition: none !important;
+    }
+    body.is-instant:after {
+      display: none !important;
+      transition: none !important;
+    }
+
+    /* ============================
+       LAYOUT — #wrapper / #main
+       ============================ */
+    #wrapper {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: var(--viewport-height);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+    #main {
+      --alignment: center;
+      --flex-alignment: center;
+      --indent-left: 1;
+      --indent-right: 1;
+      --margin-left: auto;
+      --margin-right: auto;
+      align-items: center;
+      display: flex;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: center;
+      max-width: 100%;
+      position: relative;
+      text-align: var(--alignment);
+      z-index: 1;
+    }
+    #main > .inner {
+      --padding-horizontal: 4rem;
+      --padding-vertical: 8rem;
+      --spacing: 2.5rem;
+      --width: 44rem;
+      max-width: 100%;
+      padding: var(--padding-vertical) var(--padding-horizontal);
+      position: relative;
+      width: var(--width);
+      z-index: 1;
+    }
+    #main > .inner > * {
+      margin-top: var(--spacing);
+      margin-bottom: var(--spacing);
+    }
+    #main > .inner > *:first-child { margin-top: 0 !important; }
+    #main > .inner > *:last-child  { margin-bottom: 0 !important; }
+    #main > .inner > .full {
+      margin-left: calc(var(--padding-horizontal) * -1);
+      max-width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
+      width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
+    }
+
+    /* ============================
+       IMAGE COMPONENT
+       ============================ */
+    .image {
+      display: block;
+      line-height: 0;
+      max-width: 100%;
+      position: relative;
+    }
+    .image .frame {
+      -webkit-backface-visibility: hidden;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      vertical-align: top;
+      width: 100%;
+    }
+    .image .frame img {
+      max-width: 100%;
+      vertical-align: top;
+      width: inherit;
+    }
+
+    /* Logo */
+    #image01 {
+      text-align: center;
+    }
+    #image01 .frame {
+      max-width: 100%;
+      width: 542px;
+    }
+    #image01 img {
+      height: 100% !important;
+      object-fit: cover;
+      width: 100% !important;
+    }
+    #image01 .frame img {
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    #image01 .frame:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Album art */
+    .image.style1 .frame {
+      max-width: 100%;
+      width: 100%;
+    }
+    .image.style1 img {
+      height: 100% !important;
+      object-fit: cover;
+      width: 100% !important;
+    }
+    .image.style1 .frame img {
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .image.style1 .frame:hover img {
+      transform: scale(1.06);
+    }
+
+    /* ============================
+       TYPOGRAPHY
+       ============================ */
+
+    /* Subtitle + small labels (JetBrains Mono, uppercase) */
+    h1.style1, h2.style1, h3.style1, p.style1 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.625em;
+      font-weight: 500;
+      line-height: 2;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Date labels (left-aligned, same style) */
+    #text03, #text04 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.625em;
+      font-weight: 500;
+      line-height: 2;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    /* Description body text */
+    #text05, #text06 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875em;
+      font-weight: 500;
+      line-height: 2;
+      text-align: left;
+    }
+
+    /* span.p paragraph spacing */
+    #text06 span.p:nth-child(n+2),
+    #text07 span.p:nth-child(n+2) {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    /* Tracklist */
+    #text07 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.625em;
+      font-weight: 500;
+      line-height: 1.75;
+      padding-left: 1rem;
+      text-align: left;
+    }
+
+    /* "Contact us" heading */
+    #text01 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.375em;
+      font-weight: 500;
+      line-height: 1.875;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    /* Footer copyright */
+    h1.style5, h2.style5, h3.style5, p.style5 {
+      color: rgba(46,46,46,0.38);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.5em;
+      font-weight: 500;
+      line-height: 2;
+      text-align: center;
+    }
+
+    /* ============================
+       WHITE CONTAINER BOXES
+       ============================ */
+    .container.style1 {
+      --alignment: center;
+      --flex-alignment: center;
+      align-items: center;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .container.style1:not(:first-child) { margin-top: 8rem !important; }
+    .container.style1:not(:last-child)  { margin-bottom: 8rem !important; }
+    .container.style1 > .wrapper {
+      width: 100%;
+    }
+    .container.style1 > .wrapper > .inner {
+      --gutters: 6.125rem;
+      --padding-horizontal: 1rem;
+      --padding-vertical: 1rem;
+      --spacing: 1rem;
+      padding: var(--padding-vertical) var(--padding-horizontal);
+    }
+    .container.style1.default > .wrapper > .inner > * {
+      margin-bottom: var(--spacing);
+      margin-top: var(--spacing);
+    }
+    .container.style1.default > .wrapper > .inner > *:first-child { margin-top: 0 !important; }
+    .container.style1.default > .wrapper > .inner > *:last-child  { margin-bottom: 0 !important; }
+
+    /* ============================
+       BUTTONS
+       ============================ */
+    .buttons {
+      cursor: default;
+      display: flex;
+      justify-content: var(--flex-alignment, center);
+      padding: 0;
+    }
+    .buttons li {
+      max-width: 100%;
+    }
+    .buttons.style1 {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .buttons.style1 li a {
+      align-items: center;
+      background-color: #ED915C;
+      border-radius: 0;
+      color: #FFFFFF;
+      display: inline-flex;
+      flex-direction: row-reverse;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875em;
+      font-weight: 600;
+      height: 4.875rem;
+      justify-content: flex-end;
+      letter-spacing: 0.175rem;
+      line-height: 4.875rem;
+      max-width: 100vw;
+      padding: 0 2.4375rem;
+      padding-left: calc(0.175rem + 2.4375rem);
+      text-decoration: none;
+      transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+      vertical-align: middle;
+      white-space: nowrap;
+      width: 100vw;
+    }
+    .buttons.style1 li a svg {
+      display: block;
+      fill: #FFFFFF;
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: 100%;
+      margin-left: 0.5em;
+      margin-right: calc(-0.125em + 0.175rem);
+      min-width: 16px;
+      transition: fill 0.25s ease;
+      width: 1.125em;
+    }
+    .buttons.style1 li a .label {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+      text-align: left;
+      width: 100%;
+    }
+    .buttons.style1 li a:hover {
+      transform: scale(1.025);
+    }
+
+    /* Release 1 — Megayacht */
+    #buttons01 .n01 { background-color: #2ED95D; }
+    #buttons01 .n02 { background-color: #FF6363; }
+
+    /* Release 2 — Hypnic Jerks */
+    #buttons03 .n01 { background-color: #2ED95D; }
+    #buttons03 .n02 { background-color: #0CACD7; }
+
+    /* ============================
+       CONTACT FORM
+       ============================ */
+    form {
+      display: flex;
+      justify-content: var(--flex-alignment, center);
+      width: 100%;
+    }
+    form .inner {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      width: 100%;
+    }
+    form.style1 .inner > * {
+      margin: 0;
+      max-width: 100%;
+    }
+    form.style1 label {
+      color: #262021;
+      display: block;
+      font-family: 'Merriweather', serif;
+      font-size: 1em;
+      font-weight: 300;
+      line-height: 1.5;
+      margin: 0.25rem 0;
+    }
+    form.style1 input[type="text"],
+    form.style1 input[type="email"],
+    form.style1 textarea {
+      background-color: #FFFFFF;
+      border: 0;
+      border-radius: 0;
+      color: #2E2E2E;
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      letter-spacing: 0.075rem;
+      outline: 0;
+      width: 100%;
+    }
+    form.style1 input[type="text"],
+    form.style1 input[type="email"] {
+      height: 4.875rem;
+      line-height: 4.875rem;
+      padding: 0 1.70625rem;
+      padding-left: calc(0.075rem + 1.70625rem);
+    }
+    form.style1 textarea {
+      height: 8rem;
+      line-height: 1.5;
+      padding: 1.70625rem;
+      padding-top: 1.44375rem;
+    }
+    form.style1 ::-webkit-input-placeholder { color: #2E2E2E; opacity: 0.55; }
+    form.style1 :-ms-input-placeholder      { color: #2E2E2E; opacity: 0.55; }
+    form.style1 ::placeholder               { color: #2E2E2E; opacity: 0.55; }
+    form.style1 .field {
+      margin-bottom: 0;
+    }
+    form.style1 .actions {
+      margin-top: 0;
+    }
+    form.style1 .actions button {
+      align-items: center;
+      background-color: #4A9EC2;
+      border: 0;
+      border-radius: 0;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: row-reverse;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      height: 4.875rem;
+      justify-content: flex-end;
+      letter-spacing: 0.4rem;
+      line-height: 4.875rem;
+      max-width: 100vw;
+      padding: 0 2.4375rem;
+      padding-left: calc(0.4rem + 2.4375rem);
+      text-transform: uppercase;
+      transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+      width: 100vw;
+    }
+    form.style1 .actions button:hover {
+      transform: scale(1.0775);
+    }
+    form.style1 .actions button svg {
+      display: block;
+      fill: #FFFFFF;
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: 100%;
+      margin-left: 0.5em;
+      margin-right: calc(-0.125em + 0.4rem);
+      min-width: 18px;
+      transition: fill 0.25s ease;
+      width: 2.03125em;
+    }
+    form.style1 .actions button .label {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+      text-align: left;
+      width: 100%;
+    }
+    form.style1 .success-message {
+      color: #4A9EC2;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875em;
+      font-weight: 500;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    @keyframes button-spinner {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ============================
+       RESPONSIVE
+       ============================ */
+    @media (max-width: 1680px) {
+      html { font-size: 13pt; }
+    }
+    @media (max-width: 1280px) {
+      html { font-size: 13pt; }
+    }
+    @media (max-width: 980px) {
+      html { font-size: 11pt; }
+    }
+    @media (max-width: 736px) {
+      html { font-size: 11pt; }
+      #main > .inner {
+        --padding-horizontal: 1rem;
+        --padding-vertical: 3.5rem;
+        --spacing: 2.5rem;
+      }
+      #text07 { padding-left: 0.75rem; }
+      .container.style1:not(:first-child) { margin-top: 4rem !important; }
+      .container.style1:not(:last-child)  { margin-bottom: 4rem !important; }
+      p.style5 { font-size: 1em; }
+    }
+    @media (max-width: 480px) {
+      #main > .inner { --spacing: 2.1875rem; }
+      .buttons.style1 {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+      .buttons.style1 li { width: 100%; }
+      .buttons.style1 li a {
+        max-width: 100%;
+        width: 100%;
+      }
+      form.style1 .actions button {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+    @media (max-width: 360px) {
+      #main > .inner {
+        --padding-horizontal: 0.75rem;
+        --padding-vertical: 2.625rem;
+        --spacing: 1.875rem;
+      }
+      .container.style1 > .wrapper > .inner {
+        --gutters: 4.5rem;
+        --padding-horizontal: 0.75rem;
+        --padding-vertical: 0.75rem;
+        --spacing: 0.75rem;
+      }
+    }
+
+  </style>
+  <noscript>
+    <style>
+      body { overflow: auto !important; }
+      body:after { display: none !important; }
+      #main > .inner > * { opacity: 1.0 !important; transform: none !important; transition: none !important; filter: none !important; }
+      .container.style1 > .wrapper > .inner > * { opacity: 1.0 !important; transform: none !important; transition: none !important; filter: none !important; }
+    </style>
+  </noscript>
+</head>
+<body class="is-loading">
+
+  <!-- SVG Icon Sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" display="none" width="0" height="0">
+    <symbol id="icon-spotify" viewBox="0 0 40 40">
+      <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm9.184 28.854a1.248 1.248 0 01-1.717.415c-4.702-2.872-10.617-3.52-17.588-1.929a1.247 1.247 0 01-.556-2.43c7.627-1.743 14.172-1.022 19.446 2.228.589.36.775 1.126.415 1.716zm2.452-5.455a1.562 1.562 0 01-2.147.514C24.797 20.9 18.3 19.9 10.378 22.18a1.562 1.562 0 01-.905-2.988c8.818-2.674 16.2-1.518 22.648 2.06a1.562 1.562 0 01.515 2.147zm.21-5.68C26.1 14.48 16.7 14.16 11.124 15.84a1.875 1.875 0 11-1.088-3.59C16.7 10.22 27.1 10.6 33.208 15.18a1.875 1.875 0 11-1.362 3.538z" />
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 40 40">
+      <path d="M20 3.604c5.337 0 5.967.02 8.073.117 5.292.241 7.765 2.754 8.006 8.006.097 2.105.116 2.735.116 8.073 0 5.338-.02 5.967-.116 8.073-.242 5.245-2.707 7.764-8.006 8.006-2.106.096-2.733.116-8.073.116-5.338 0-5.967-.02-8.073-.116-5.305-.243-7.764-2.768-8.006-8.006C3.824 25.767 3.804 25.137 3.804 20c0-5.337.021-5.967.117-8.072C4.163 6.69 6.634 4.163 11.927 3.92 14.033 3.825 14.662 3.604 20 3.604zM20 0c-5.43 0-6.111.023-8.242.12C4.61.455.456 4.603.12 11.758.023 13.89 0 14.571 0 20c0 5.43.023 6.112.12 8.242C.456 35.394 4.603 39.545 11.758 39.88 13.889 39.977 14.57 40 20 40c5.43 0 6.112-.023 8.242-.12 7.143-.335 11.306-4.483 11.638-11.638C39.977 26.112 40 25.43 40 20c0-5.43-.023-6.11-.12-8.242C39.548 4.61 35.4.456 28.242.12 26.112.023 25.43 0 20 0zm0 9.73a10.27 10.27 0 100 20.54A10.27 10.27 0 0020 9.73zm0 16.937a6.667 6.667 0 110-13.334 6.667 6.667 0 010 13.334zm13.077-17.349a2.4 2.4 0 11-4.8 0 2.4 2.4 0 014.8 0z" />
+    </symbol>
+    <symbol id="icon-bandcamp" viewBox="0 0 40 40">
+      <path d="M0 27.5L11.2 12.5H40L28.8 27.5z" />
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 40 40">
+      <path d="M15 8l12 12-12 12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
+
+        <!-- LOGO -->
+        <div id="image01" class="image">
+          <span class="frame">
+            <img src="assets/images/image01.png" alt="Biltroy Records" />
+          </span>
+        </div>
+
+        <!-- SUBTITLE -->
+        <p id="text02" class="style1">Biltroy Records // independent label // Chapel Hill, NC</p>
+
+        <!-- RELEASE 1: Megayacht -->
+        <div id="container01" class="style1 container default">
+          <div class="wrapper">
+            <div class="inner" data-onvisible-trigger="1">
+
+              <p id="text03">Friday 08/02/2024</p>
+
+              <div id="image03" class="style1 image">
+                <span class="frame">
+                  <img src="assets/images/image03.jpg" alt="Megayacht - Attacking The Rust" />
+                </span>
+              </div>
+
+              <ul id="buttons01" class="style1 buttons">
+                <li>
+                  <a href="https://open.spotify.com/album/7t62Zx9n7GkOVOz2dAWChY?si=r0xmiLeVRFWGELwmx9gbzQ" target="_blank" rel="noopener" class="button n01">
+                    <svg role="img" aria-label="Spotify">
+                      <use xlink:href="#icon-spotify"></use>
+                    </svg>
+                    <span class="label">Attacking The Rust</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://megayacht.bandcamp.com/album/attacking-the-rust" target="_blank" rel="noopener" class="button n02">
+                    <svg role="img" aria-label="Bandcamp">
+                      <use xlink:href="#icon-bandcamp"></use>
+                    </svg>
+                    <span class="label">Attacking The Rust &#8211; Cassette &amp; Vinyl</span>
+                  </a>
+                </li>
+              </ul>
+
+              <p id="text06">
+                <span class="p"><strong>Megayacht&#8217;s</strong> debut LP, <em><strong>Attacking The Rust</strong></em>, brings the band&#8217;s indie rock sensibilities to the forefront. <em>Attacking The Rust</em> is the result of two years of writing, iteration, and recording. Tracked and mixed at <strong>Biltroy Studios</strong> in Hillsborough, NC, the band was able to capture the joy, tone, and intention of each song on the album.</span>
+                <span class="p">Tracks:</span>
+              </p>
+
+              <p id="text07">
+                <span class="p">1. Wanted To Be There<br />
+                2. Caviar Eyes<br />
+                3. These Bones Convey<br />
+                4. Let&#8217;s Disappoint Them<br />
+                5. Vanity Eyepatch<br />
+                6. The List<br />
+                7. No Trespassing<br />
+                8. Revisions To The System<br />
+                9. Be Still My Heart<br />
+                10. Spiders Of Mention</span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- RELEASE 2: Hypnic Jerks -->
+        <div id="container04" class="style1 container default">
+          <div class="wrapper">
+            <div class="inner" data-onvisible-trigger="1">
+
+              <p id="text04">Friday 05/03/2024</p>
+
+              <div id="image02" class="style1 image">
+                <span class="frame">
+                  <img src="assets/images/image02.jpg" alt="Hypnic Jerks - Storm Drain" />
+                </span>
+              </div>
+
+              <ul id="buttons03" class="style1 buttons">
+                <li>
+                  <a href="https://open.spotify.com/track/4IroatwaNpswWxLGdnMVbf?si=c836debe1fc94c27" target="_blank" rel="noopener" class="button n01">
+                    <svg role="img" aria-label="Spotify">
+                      <use xlink:href="#icon-spotify"></use>
+                    </svg>
+                    <span class="label">Storm Drain</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/hypnicjerksband/" target="_blank" rel="noopener" class="button n02">
+                    <svg role="img" aria-label="Instagram">
+                      <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                    <span class="label">Hypnic Jerks</span>
+                  </a>
+                </li>
+              </ul>
+
+              <p id="text05">Chapel Hill band, <strong>Hypnic Jerks&#8217;</strong> debut single, <em><strong>Storm Drain</strong></em>, released on May 3rd, 2024.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT HEADING -->
+        <p id="text01">Contact us</p>
+
+        <!-- CONTACT FORM -->
+        <form id="form01" class="style1" novalidate>
+          <div class="inner">
+            <div class="field">
+              <label for="form01-name">Name</label>
+              <input type="text" name="name" id="form01-name" placeholder="Name" maxlength="128" required />
+            </div>
+            <div class="field">
+              <label for="form01-email">Email</label>
+              <input type="email" name="email" id="form01-email" placeholder="Email" maxlength="128" required />
+            </div>
+            <div class="field">
+              <label for="form01-message">Message</label>
+              <textarea name="message" id="form01-message" placeholder="Message" maxlength="16384" required></textarea>
+            </div>
+            <div class="actions">
+              <button type="submit">
+                <svg role="img" aria-label="Submit">
+                  <use xlink:href="#icon-arrow-right"></use>
+                </svg>
+                <span class="label">Submit</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- FOOTER -->
+        <p id="text13" class="style5">&#169; 2024 Biltroy Studios. All rights reserved.</p>
+
+      </div><!-- /.inner -->
+    </div><!-- /#main -->
+  </div><!-- /#wrapper -->
+
+  <script>
+    (function() {
+
+      // ============================
+      // 1. PAGE LOAD TRANSITION
+      // ============================
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.body.classList.remove('is-loading');
+          document.body.classList.add('is-playing');
+          setTimeout(function() {
+            document.body.classList.remove('is-playing');
+            document.body.classList.add('is-ready');
+          }, 375);
+        }, 100);
+      });
+
+      // ============================
+      // 2. MOBILE VIEWPORT HEIGHT FIX
+      // ============================
+      if ('ontouchstart' in window) {
+        document.body.classList.add('is-touch');
+        var setVH = function() {
+          document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
+          document.documentElement.style.setProperty('--background-height', window.innerHeight + 'px');
+        };
+        window.addEventListener('resize', setVH);
+        setVH();
+      }
+
+      // ============================
+      // 3. SCROLL EVENTS SYSTEM
+      // ============================
+      var scrollEvents = {
+        items: [],
+        handler: function() {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          var viewportHeight = window.innerHeight;
+          var bottom = scrollTop + viewportHeight;
+
+          scrollEvents.items.forEach(function(item) {
+            var rect = item.element.getBoundingClientRect();
+            var elementTop = rect.top + scrollTop;
+            var elementBottom = elementTop + rect.height;
+            var pad = viewportHeight * item.threshold;
+            var visible = (elementTop < bottom - pad && elementBottom > scrollTop + pad);
+
+            if (visible !== item.state) {
+              item.state = visible;
+              if (visible && item.enter) item.enter.call(item.element);
+              else if (!visible && item.leave) item.leave.call(item.element);
+            }
+          });
+        },
+        add: function(element, threshold, enter, leave) {
+          this.items.push({
+            element: element,
+            threshold: threshold,
+            state: false,
+            enter: enter,
+            leave: leave
+          });
+        },
+        init: function() {
+          window.addEventListener('load',   this.handler.bind(this));
+          window.addEventListener('resize', this.handler.bind(this));
+          window.addEventListener('scroll', this.handler.bind(this), { passive: true });
+          this.handler();
+        }
+      };
+      scrollEvents.init();
+
+      // ============================
+      // 4. ONVISIBLE ANIMATION SYSTEM
+      // ============================
+      var onvisible = {
+        // effect definitions
+        effects: {
+          'zoom-in-image': {
+            rewind: function(el, opts) {
+              var img = el.querySelector('img');
+              if (!img) return;
+              img.style.transition = 'none';
+              img.style.transform = 'scale(1)';
+              img.style.opacity = '0';
+            },
+            play: function(el, opts, delay) {
+              var img = el.querySelector('img');
+              if (!img) return;
+              var scale = 1 + (0.1 * opts.intensity);
+              setTimeout(function() {
+                img.style.transition = 'transform ' + opts.speed + 'ms ease, opacity ' + opts.speed + 'ms ease';
+                img.style.transform = 'scale(' + scale + ')';
+                img.style.opacity = '1';
+              }, delay);
+            }
+          },
+          'fade-right': {
+            rewind: function(el, opts) {
+              el.style.transition = 'none';
+              el.style.opacity = '0';
+              el.style.transform = 'translateX(' + (-1.5 * opts.intensity) + 'rem)';
+            },
+            play: function(el, opts, delay) {
+              setTimeout(function() {
+                el.style.transition = 'opacity ' + opts.speed + 'ms ease, transform ' + opts.speed + 'ms ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateX(0)';
+              }, delay);
+            }
+          },
+          'fade-left': {
+            rewind: function(el, opts) {
+              el.style.transition = 'none';
+              el.style.opacity = '0';
+              el.style.transform = 'translateX(' + (1.5 * opts.intensity) + 'rem)';
+            },
+            play: function(el, opts, delay) {
+              setTimeout(function() {
+                el.style.transition = 'opacity ' + opts.speed + 'ms ease, transform ' + opts.speed + 'ms ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateX(0)';
+              }, delay);
+            }
+          },
+          'fade-up': {
+            rewind: function(el, opts) {
+              el.style.transition = 'none';
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(' + (1.5 * opts.intensity) + 'rem)';
+            },
+            play: function(el, opts, delay) {
+              setTimeout(function() {
+                el.style.transition = 'opacity ' + opts.speed + 'ms ease, transform ' + opts.speed + 'ms ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+              }, delay);
+            }
+          }
+        },
+
+        add: function(selector, opts) {
+          var self = this;
+          var elements = document.querySelectorAll(selector);
+          var effect = self.effects[opts.style];
+          if (!effect) return;
+
+          elements.forEach(function(el) {
+            // Set initial hidden state
+            effect.rewind(el, opts);
+
+            // Register scroll event
+            var threshold = opts.threshold ? (opts.threshold * 0.0833) : 0.25; // threshold:3 → ~0.25
+            scrollEvents.add(el, threshold, function() {
+              // Stagger support (for buttons li children)
+              if (opts.stagger && opts.staggerSelector) {
+                var children = el.querySelectorAll(opts.staggerSelector);
+                children.forEach(function(child, i) {
+                  var childEffect = self.effects[opts.style];
+                  if (!childEffect) return;
+                  childEffect.rewind(child, opts);
+                  childEffect.play(child, opts, opts.delay + (opts.stagger * i));
+                });
+              } else {
+                effect.play(el, opts, opts.delay || 0);
+              }
+            });
+          });
+        }
+      };
+
+      // Register all animations
+      onvisible.add('#image01',                 { style: 'zoom-in-image', speed: 500, intensity: 2,  threshold: 3, delay: 125,  replay: false });
+      onvisible.add('p.style1',                 { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('.image.style1',            { style: 'zoom-in-image', speed: 500, intensity: 2,  threshold: 3, delay: 125,  replay: false });
+      onvisible.add('.buttons.style1',          { style: 'fade-left',     speed: 500, intensity: 2,  threshold: 3, delay: 250,  stagger: 125, staggerSelector: ':scope > li', replay: false });
+      onvisible.add('#text03',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('#text04',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('#text05',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('#text06',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('#text07',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('.container.style1',        { style: 'fade-up',       speed: 375, intensity: 1,  threshold: 3, delay: 0,    replay: false });
+      onvisible.add('#text01',                  { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+      onvisible.add('p.style5',                 { style: 'fade-right',    speed: 500, intensity: 10, threshold: 3, delay: 0,    replay: false });
+
+      // ============================
+      // 5. CONTACT FORM
+      // ============================
+      var form = document.getElementById('form01');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var name    = document.getElementById('form01-name').value.trim();
+          var email   = document.getElementById('form01-email').value.trim();
+          var message = document.getElementById('form01-message').value.trim();
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!name || !email || !message || !emailRegex.test(email)) {
+            var fields = form.querySelectorAll('input, textarea');
+            fields.forEach(function(f) {
+              if (!f.value.trim() || (f.type === 'email' && !emailRegex.test(f.value.trim()))) {
+                f.style.outline = '2px solid #FF6363';
+              } else {
+                f.style.outline = '';
+              }
+            });
+            return;
+          }
+
+          // Show success message
+          var actionsDiv = form.querySelector('.actions');
+          actionsDiv.innerHTML = '<p class="success-message">Thank you! :)</p>';
+          form.reset();
+        });
+
+        // Clear red outlines on input
+        form.querySelectorAll('input, textarea').forEach(function(f) {
+          f.addEventListener('input', function() {
+            f.style.outline = '';
+          });
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+</html>

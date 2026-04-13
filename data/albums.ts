@@ -32,6 +32,28 @@ export interface Album {
 
 export const albums: Album[] = [
   {
+    slug:          'i-think-we-made-some-songs',
+    artist:        'The Experts',
+    title:         'I Think We Made Some Songs',
+    type:          'Compilation',
+    releaseDate:   '2025-04-01',
+    coverImage:    '/images/the-experts-itsmss.jpg',
+    spotifyAlbumId: '5TMAxEb9r7dgy8lgtPSeWE',
+    spotifyUrl:    'https://open.spotify.com/album/5TMAxEb9r7dgy8lgtPSeWE',
+    description:   `Yup, 20 years ago, 3/4 of Megayacht were in a band called The Experts. Kevin, Frank, and Mitch, along with low-end gatekeeper Richard, were rocking and rolling all over the Triangle, Triad, and Charlotte metro areas (in a van with carpet and a bed in it!). We blew the doors off a dance marathon, got real sweaty at The Durham Music Festival, rocked some sort of corporate event at the ATC that I don't remember why, slayed a punk rock and metal festival, and threw down as an unplugged trio on a morning sports radio show! We practiced and recorded in an old abandoned office building in Durham that looks to still be empty. My guess is that it continues to flood when it rains. It was a fun band to be in. We released a couple of recordings at the time that were recently discovered in the vaults, so we figured that since it's the 20th anniversary of our first release, I Think We Made Some Plans, we should pull them out, put some 2025 shine on them, and release a digital only compilation of songs that we aren't completely embarrassed about. It's called, I Think We Made Some Songs, and we hope y'all find joy in listening to these oldies just as much as we have had revisiting them.`,
+    tracks: [
+      'LA Looks',
+      'Hit Bull Win Steak',
+      '27 Years Old Now',
+      'Counted On',
+      'Rock With Me',
+      'The Lightning Said',
+      'I Spy',
+      "President's Son",
+      '9 to 5',
+    ],
+  },
+  {
     slug:          'hypnic-jerks',
     artist:        'Hypnic Jerks',
     title:         'Hypnic Jerks',
